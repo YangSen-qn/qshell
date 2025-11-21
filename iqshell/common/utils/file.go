@@ -2,10 +2,12 @@ package utils
 
 import (
 	"bufio"
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
+	"net/http"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -129,8 +131,13 @@ func NetworkFileLength(srcResUrl string) (fileSize int64, err *data.CodeError) {
 }
 
 func GetNetworkFileInfo(srcResUrl string) (*NetworkFileInfo, *data.CodeError) {
-
-	resp, respErr := client.DefaultStorageClient().Head(srcResUrl)
+	// 为了对 CDN 友好，此处使用 GET 方法获取文件大小，可以进行缓存，防止有些链接反复回源（比如：图片瘦身）
+	request, err := http.NewRequest("GET", srcResUrl, nil)
+	if err != nil {
+		return nil, data.NewEmptyError().AppendDescF("create request error:%v", err)
+	}
+	request.Header.Set("range", "bytes=0-0")
+	resp, respErr := client.DefaultStorageClient().Do(context.Background(), request)
 	if respErr != nil {
 		return nil, data.NewEmptyError().AppendDescF("New head request failed, %s", respErr.Error())
 	}

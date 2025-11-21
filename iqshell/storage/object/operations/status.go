@@ -176,7 +176,7 @@ func getResultInfo(bucket, key string, status object.StatusResult) string {
 	return statInfo
 }
 
-var objectTypes = []string{"标准存储", "低频存储", "归档存储", "深度归档存储", "归档直读存储"}
+var objectTypes = []string{"标准存储", "低频存储", "归档存储", "深度归档存储", "归档直读存储", "智能分层存储"}
 
 func getFileTypeDescription(fileTypes int) string {
 	typeString := "未知类型"
