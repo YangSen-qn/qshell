@@ -311,6 +311,30 @@ qshell 命令配置 > 账号配置 > 全局配置
 | awslist       | 列举 | 列举亚马逊的存储空间           | [文档](docs/awslist.md)       |
 | awsfetch      | 抓取 | 从亚马逊存储迁移数据到七牛存储 | [文档](docs/awsfetch.md)      |
 
+### 沙箱管理命令
+沙箱命令使用独立的 API Key 认证，需要配置环境变量：
+- `QINIU_API_KEY` 或 `E2B_API_KEY`：API 密钥（必填）
+- `QINIU_SANDBOX_API_URL` 或 `E2B_API_URL`：API 服务地址（可选）
+
+优先级：`QINIU_*` > `E2B_*`
+
+| 命令                       | 别名 | 类别 | 描述                         | 详细                                      |
+|----------------------------|------|------|------------------------------|-------------------------------------------|
+| sandbox list               | sbx ls | 沙箱 | 列出沙箱实例                 | [文档](docs/sandbox_list.md)              |
+| sandbox create             | sbx cr | 沙箱 | 创建沙箱并连接终端           | [文档](docs/sandbox_create.md)            |
+| sandbox connect            | sbx cn | 沙箱 | 连接到已有沙箱终端           | [文档](docs/sandbox_connect.md)           |
+| sandbox kill               | sbx kl | 沙箱 | 终止一个或多个沙箱           | [文档](docs/sandbox_kill.md)              |
+| sandbox logs               | sbx lg | 沙箱 | 查看沙箱日志                 | [文档](docs/sandbox_logs.md)              |
+| sandbox metrics            | sbx mt | 沙箱 | 查看沙箱资源指标             | [文档](docs/sandbox_metrics.md)           |
+| sandbox template list      | sbx tpl ls | 模板 | 列出沙箱模板                 | [文档](docs/sandbox_template_list.md)     |
+| sandbox template get       | sbx tpl gt | 模板 | 查看模板详情                 | [文档](docs/sandbox_template_get.md)      |
+| sandbox template delete    | sbx tpl dl | 模板 | 删除模板                     | [文档](docs/sandbox_template_delete.md)   |
+| sandbox template build     | sbx tpl bd | 模板 | 创建并构建模板               | [文档](docs/sandbox_template_build.md)    |
+| sandbox template builds    | sbx tpl bds | 模板 | 查看模板构建状态             | [文档](docs/sandbox_template_builds.md)   |
+| sandbox template publish   | sbx tpl pb | 模板 | 发布模板（设为公开）         | [文档](docs/sandbox_template_publish.md)  |
+| sandbox template unpublish | sbx tpl upb | 模板 | 取消发布模板（设为私有）     | [文档](docs/sandbox_template_unpublish.md)|
+| sandbox template init      | sbx tpl it | 模板 | 初始化模板项目脚手架         | [文档](docs/sandbox_template_init.md)     |
+
 ## 问题反馈
 
 如果您有任何问题，请写在[ISSUE列表](https://github.com/qiniu/qshell/issues)里面，我们会尽快回复您。
