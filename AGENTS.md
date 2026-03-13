@@ -109,13 +109,14 @@ go build -ldflags '-X github.com/qiniu/qshell/v2/iqshell/common/version.version=
 
 ### 格式化
 
-- 使用 `gofmt -s` 格式化代码（CI 会检查）
+- 使用 `gofmt -s` 格式化代码（**CI 强制检查**）
 - 提交前确保 `gofmt -s -l .` 无输出
 
-### 静态检查
+### 静态检查（本地提交前）
 
-- 使用 `staticcheck`（`make staticcheck`）
-- 使用 `go vet`（`make vet`）
+- 使用 `make lint` 运行 `go vet` + `staticcheck`
+- 注意：`vet` 和 `staticcheck` 目前**不在 CI 中运行**，仅作为本地提交前检查
+- CI 仅强制检查 `gofmt` 和单元测试
 
 ### 注释规范
 

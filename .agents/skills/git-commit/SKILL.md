@@ -9,7 +9,7 @@ allowed-tools:
   - Bash(git diff:*)
   - Bash(git log:*)
   - Bash(git status:*)
-  - Bash(git push:*)
+  - Bash(git push)
 ---
 
 # 规范化提交
@@ -21,7 +21,7 @@ allowed-tools:
 1. 查看 `status/diff/log`，确认提交范围与语言风格。
 2. 暂存目标文件并展示"将提交列表"。
 3. 生成符合 Angular 规范的 commit message。
-4. 提交后如有上游分支则 push。
+4. 仅当用户显式传入 `push=true` 时才 push，默认不 push。
 
 ## 何时不要使用（Do NOT use）
 
@@ -103,9 +103,10 @@ Footer（按需）：
 2. 执行 `git add`（按文件名添加，避免 `git add -A`）。
 3. 展示 commit message 草案并确认。
 4. 执行 `git commit`。
-5. 如有上游分支则 push：
+5. **仅当用户显式传入 `push=true` 时**才执行 push：
    - `git push`
    - 或 `git push -u origin <current-branch>`
+   - 未传入 `push=true` 时，跳过 push 步骤
 
 ## 提交前检查提醒
 
@@ -119,7 +120,8 @@ Footer（按需）：
 - 不要使用 emoji 在 commit message 中
 - 不要在 commit message 中包含 AI 辅助工具相关信息
 - 不要添加 "Generated with" 或 "Co-Authored-By: AI" 等内容
-- 不要使用 `--no-verify` 跳过 hooks
+- 不要使用 `--force` 或 `--delete` 等危险 push 选项
+- 不要在用户未显式传入 `push=true` 时自动 push
 
 ## 输出模板
 

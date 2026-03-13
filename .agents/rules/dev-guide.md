@@ -28,8 +28,8 @@
 
 ## 编码规范
 
-- `gofmt -s` 格式化（CI 检查）
-- `staticcheck` + `go vet` 静态检查
+- `gofmt -s` 格式化（**CI 强制检查**）
+- `make lint`（`go vet` + `staticcheck`）— 本地提交前检查，不在 CI 中运行
 - 注释使用**中文**，导出标识符注释以名称开头（godoc 规范）
 - 错误使用 `fmt.Errorf("context: %w", err)` 包装
 
