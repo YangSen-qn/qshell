@@ -1,3 +1,8 @@
+# 2.19.0
+## 新增
+1. 支持沙箱（`sandbox`）管理功能，包括沙箱实例的列举（`list`）、创建（`create`）、连接（`connect`）、执行命令（`exec`）、终止（`kill`）、暂停（`pause`）、恢复（`resume`），以及查看日志（`logs`）和资源指标（`metrics`）
+2. 支持沙箱模板（`template`）管理功能，包括模板的初始化（`init`）、构建（`build`）、查看构建状态（`builds`）、发布（`publish`）、取消发布（`unpublish`）、列举（`list`）、获取详情（`get`）、删除（`delete`）
+
 # 2.18.0
 ## 调整
 1. 分片上传默认使用 v2 接口
