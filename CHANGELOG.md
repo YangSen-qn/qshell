@@ -1,3 +1,7 @@
+# 2.19.10 (2026-07-09)
+## 更新
+1. 升级 `github.com/qiniu/go-sdk/v7` 到 `v7.26.15`，修复 `BucketManager.GetBucketInfo` 在服务端未返回 `ctime` 字段时 `time.Parse(time.RFC3339, "")` 抛错的兼容性问题（返回 `parsing time "" as "2006-01-02T15:04:05Z07:00": cannot parse "" as "2006"`），同时 `BucketInfo.Ctime` 字段类型由 `int` 改为 `time.Time`，未返回时为零值
+
 # 2.19.9 (2026-06-30)
 ## 新增
 1. `qshell sandbox injection-rule create` / `update` 新增 `--if-headers` 与 `--if-queries` 参数，用于限制请求注入规则的匹配范围
